@@ -1,0 +1,78 @@
+<h2>Signup</h2>
+<form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      [(ngModel)]="username"
+      required
+      minlength="6"
+      pattern="^[a-zA-Z0-9_]+$"
+      #usernameField="ngModel">
+
+    <div *ngIf="usernameField.invalid && usernameField.touched" class="error-message">
+      <div *ngIf="usernameField.errors?.['required']">Username is required.</div>
+      <div *ngIf="usernameField.errors?.['pattern']">Username can only contain letters, numbers, and underscores.</div>
+    </div>
+
+
+    <div *ngIf="username.length < 6" class="info-message">
+      Username must be at least 6 characters long.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      [(ngModel)]="email"
+      required
+      email
+      #emailField="ngModel">
+
+    <div *ngIf="emailField.invalid && emailField.touched" class="error-message">
+      <div *ngIf="emailField.errors?.['required']">Valid email is required.</div>
+      <div *ngIf="email && !email.includes('@')">Email must contain an "&#64;" symbol.</div>
+      <div *ngIf="email && !isValidDomain(email)">Email must be from gmail.com or yahoo.com.</div>
+
+    </div>
+  </div>
+
+
+
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      [(ngModel)]="password"
+      required
+      minlength="6"
+      #passwordField="ngModel">
+    <div *ngIf="passwordField.invalid && passwordField.touched" class="error-message">
+      Password is required and must be at least 6 characters long.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="confirmPassword">Confirm Password:</label>
+    <input
+      type="password"
+      id="confirmPassword"
+      name="confirmPassword"
+      [(ngModel)]="confirmPassword"
+      required
+      #confirmPasswordField="ngModel">
+    <div *ngIf="confirmPassword !== password && confirmPasswordField.touched" class="error-message">
+      Passwords do not match.
+    </div>
+  </div>
+
+  <button type="submit">Signup</button>
+</form>
+<p id="message" class="message">{{ message }}</p>

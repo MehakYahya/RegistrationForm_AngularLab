@@ -1,0 +1,22 @@
+
+
+.info-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.red-text {
+  color: red;
+}
+
+.tick-icon {
+  color: green;
+  margin-left: 5px;
+}

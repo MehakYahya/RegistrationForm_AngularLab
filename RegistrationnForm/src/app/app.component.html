@@ -1,0 +1,27 @@
+<div class="container">
+  <app-header></app-header>
+  <div class="row">
+    <div class="col-md-3">
+      <ul class="nav flex-column">
+        <h1>Here Starts Forms with validations</h1>
+        <li class="nav-item"><a routerLink="/">Home</a></li>
+        <li class="nav-item"><a routerLink="/login">Login</a></li>
+        <li class="nav-item"><a routerLink="/signup">Signup</a></li>
+        <li class="nav-item">
+          <a [routerLink]="['/forget-password']">Forget Password</a>
+        </li>
+
+      </ul>
+    </div>
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-12">
+          <router-outlet></router-outlet>
+
+
+          <app-footer></app-footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
